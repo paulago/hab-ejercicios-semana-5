@@ -39,3 +39,31 @@ const puntuaciones = [
     puntos: [2, 3, 3, 4],
   },
 ];
+
+// Map llama a la función callback provista una vez por elemento de un array, en orden, y construye un nuevo array con los resultados.
+// El método reduce ejecuta callback una vez por cada elemento presente en el array.
+const totalScore = puntuaciones.map((puntuacion) => {
+  const totalScoreTeam = puntuacion.puntos.reduce(
+    (acc, currentScore) => acc + currentScore
+  );
+  return { equipo: puntuacion.equipo, puntosTotales: totalScoreTeam };
+});
+
+//-1: a se va a situar en un índice menor a b.
+//0: no hay cambios.
+//1: b se va a situar en un indice menor a a.
+const sortedScores = totalScore.sort((a, b) => {
+  return a.puntosTotales - b.puntosTotales;
+});
+
+const bestScoreTeam = sortedScores[sortedScores.length - 1].equipo;
+const worstScoreTeam = sortedScores[0].equipo;
+const bestScore = sortedScores[sortedScores.length - 1].puntosTotales;
+const worstScore = sortedScores[0].puntosTotales;
+
+console.log(
+  `El que más puntos ha conseguido ha sido ${bestScoreTeam} con un total de ${bestScore} puntos`
+);
+console.log(
+  `El que menos puntos ha conseguido ha sido ${worstScoreTeam} con un total de ${worstScore} puntos`
+);
