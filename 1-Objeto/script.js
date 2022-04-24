@@ -13,6 +13,7 @@ const people = {
 };
 
 function list(people) {
+  // Object.entries nos devuelve un array de arrays
   for (const [name, age] of Object.entries(people)) {
     if (age >= 18) {
       console.log(`${name} es mayor de edad`);

@@ -17,3 +17,10 @@ const names = [
   "Arun",
   "Kenton",
 ];
+
+// El objeto Set permite almacenar valores únicos de cualquier tipo.
+const unduplicatedList = (arr) => {
+  return [...new Set(arr)];
+};
+
+console.log(unduplicatedList(names));
